@@ -1,4 +1,4 @@
-package com.github.void022;
+package com.github.void022.phpbanknotes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
