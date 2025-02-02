@@ -1,28 +1,42 @@
 package com.github.void022.phpbanknotes.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Banknote {
-	int noteId;
-	float denomination;
-	String firstIssued;
-	String widthdrawal;
-	int seriesId;
-	String obverse;
-	String reverse;
-	String mainColor;
-	String obverseImageUrl;
-	String reverseImageUrl;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long noteId;
+	@Column(nullable = false)
+	private float denomination;
+	private String firstIssued;
+	private String withdrawal;
+	@ManyToOne
+	@JoinColumn(name = "series_id")
+	private Series series;
+	private String obverse;
+	private String reverse;
+	private String mainColor;
+	private String obverseImageUrl;
+	private String reverseImageUrl;
 
 	public Banknote() {
 	}
 
-	public Banknote(int noteId, float denomination, String firstIssued, String widthdrawal, int seriesId,
+	public Banknote(Long noteId, float denomination, String firstIssued, String withdrawal, Series series,
 			String obverse, String reverse, String mainColor, String obverseImageUrl, String reverseImageUrl) {
 		super();
 		this.noteId = noteId;
 		this.denomination = denomination;
 		this.firstIssued = firstIssued;
-		this.widthdrawal = widthdrawal;
-		this.seriesId = seriesId;
+		this.withdrawal = withdrawal;
+		this.series = series;
 		this.obverse = obverse;
 		this.reverse = reverse;
 		this.mainColor = mainColor;
@@ -30,11 +44,11 @@ public class Banknote {
 		this.reverseImageUrl = reverseImageUrl;
 	}
 
-	public int getNoteId() {
+	public Long getNoteId() {
 		return noteId;
 	}
 
-	public void setNoteId(int noteId) {
+	public void setNoteId(Long noteId) {
 		this.noteId = noteId;
 	}
 
@@ -54,20 +68,20 @@ public class Banknote {
 		this.firstIssued = firstIssued;
 	}
 
-	public String getWidthdrawal() {
-		return widthdrawal;
+	public String getWithdrawal() {
+		return withdrawal;
 	}
 
-	public void setWidthdrawal(String widthdrawal) {
-		this.widthdrawal = widthdrawal;
+	public void setWithdrawal(String withdrawal) {
+		this.withdrawal = withdrawal;
 	}
 
-	public int getSeriesId() {
-		return seriesId;
+	public Series getSeries() {
+		return series;
 	}
 
-	public void setSeriesId(int seriesId) {
-		this.seriesId = seriesId;
+	public void setSeriesId(Series series) {
+		this.series = series;
 	}
 
 	public String getObverse() {

@@ -1,25 +1,31 @@
 package com.github.void022.phpbanknotes.model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class Period {
-	int periodId;
-	String name;
-	String info;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long periodId;
+	private String name;
+	private String info;
 
 	public Period() {
 	}
 
-	public Period(int periodId, String name, String info) {
+	public Period(Long periodId, String name, String info) {
 		super();
 		this.periodId = periodId;
 		this.name = name;
 		this.info = info;
 	}
 
-	public int getPeriod_id() {
+	public Long getPeriod_id() {
 		return periodId;
 	}
 
-	public void setPeriod_id(int period_id) {
+	public void setPeriod_id(Long period_id) {
 		this.periodId = period_id;
 	}
 
